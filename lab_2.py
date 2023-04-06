@@ -79,7 +79,7 @@ def FindMaxOrder(m):
     oldOrderLen = oldMaxIndex - oldMinIndex + 1
     if m[i] > m[i-1]:
       maxIndex = i
-      if orderLen > oldOrderLen:
+      if orderLen >= oldOrderLen:
         oldMinIndex = minIndex
         oldMaxIndex = maxIndex
     else:
@@ -93,7 +93,7 @@ def FindMaxOrder(m):
     return m[oldMinIndex:(oldMaxIndex+1)]
 
 print("")
-print("#5:", FindMaxOrder([1, 2, 3, 2, 4, 5, 6, 7, 1]))
+print("#5:", FindMaxOrder([1, 2, 3, 2, 4, 5, 6, 7, 8, 2]))
 
 #Задача 6
 def MakeFence(text):
@@ -146,30 +146,36 @@ print(np.matrix(DrawMatrix(4)))
 #Задача 9
 def SumStrNumbers(s):
   res = 0
-  words = s.split()
-  for word in words:
-    if word.isdigit():
-      res += int(word)
+  n = ""
+  for i in range(len(s)):
+    if s[i].isdigit():
+      n += s[i]
+    if len(n) > 0 and not s[i].isdigit() or i + 1 == len(s):
+      res += int(n)
+      n = ""
   return res
 
 print("")
 print("#9: ", end = '')
-print(SumStrNumbers("В этой 1 строке 10 всего 5 четыре числа 9"))
+print(SumStrNumbers("В этой 1 строке10всего 5четыре числа94а1"))
 
 #Задача 10
 def SumStrNumbersNotInt(s):
   res = 0
-  words = s.split()
-  for word in words:
-    if word.isdigit():
+  dig = ""
+  for i in range(len(s)):
+    if s[i].isdigit():
+      dig += s[i]
+    if len(dig) > 0 and not s[i].isdigit() or i + 1 == len(s):
       n = 0
-      i = 1
-      for c in reversed(word):
-        n += (ord(c) - 48) * i
-        i *= 10
+      k = 1
+      for c in reversed(dig):
+        n += (ord(c) - 48) * k
+        k *= 10
       res += n
+      dig = ""
   return res
 
 print("")
 print("#10: ", end = '')
-print(SumStrNumbersNotInt("В этой 1 строке 10 всего 5 четыре числа 9"))
+print(SumStrNumbersNotInt("В этой 1 строке10всего 5четыре числа94а1"))
