@@ -2,6 +2,9 @@ import numpy as np
 
 # Задача 1
 def First(arr):
+  for k in range(len(arr)-1):
+    if len(arr[k]) != len(arr[k+1]):
+      return 0
   w = len(arr[0])
   h = len(arr)
   res = [[0]*h for i in range(w)]
@@ -105,7 +108,7 @@ print("7:", Seventh("а 1 о1 о1 о1 в в в"))
 
 # Задача 8
 def Eighth(s):
-  cur, res = 1, 1
+  cur, res = 0, 0
   for i in range(len(s) - 1):
     if s[i].isalpha() and s[i] == s[i+1]:
       cur += 1
