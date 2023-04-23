@@ -108,7 +108,9 @@ print("7:", Seventh("а 1 о1 о1 о1 в в в"))
 
 # Задача 8
 def Eighth(s):
-  cur, res = 0, 0
+  if not s:
+    return 0
+  cur, res = 1, 1
   for i in range(len(s) - 1):
     if s[i].isalpha() and s[i] == s[i+1]:
       cur += 1
@@ -119,7 +121,7 @@ def Eighth(s):
   return res
 
 print("")
-print("8:", Eighth("аааббдбаааа"))
+print("8:", Eighth(""))
 
 # Задача 9 - в условии не написано, что нельзя использовать эту команду :)
 def Nineth(s):
