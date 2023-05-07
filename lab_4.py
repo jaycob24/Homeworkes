@@ -1,6 +1,6 @@
 class Human:
-  default_name = ""
-  default_age = 0
+  default_name = "Василий"
+  default_age = 18
   def __init__(self, name = default_name, age = default_age):
     self.name = name
     self.age = age
@@ -9,13 +9,13 @@ class Human:
   def info(self):
     print(self.name, self.age, self.__house, self.__money)
   @staticmethod
-  def default_info(a = default_name, b = default_age):
-    print(a, b)
+  def default_info():
+    print(Human.default_name, Human.default_age)
   def __make_deal(self, house, price):
     self.__money = self.__money - price
     self.__house.append((house._price, house._area))
-  def earn_money(self):
-    self.__money += 100
+  def earn_money(self, money):
+    self.__money += money
   def buy_house(self, house, discount = 0):
     price = house.final_price(discount)
     if self.__money < price:
@@ -43,6 +43,6 @@ h.info()
 sh = SmallHouse(30)
 h.buy_house(sh)
 
-h.earn_money()
+h.earn_money(500)
 h.buy_house(sh)
 h.info()
